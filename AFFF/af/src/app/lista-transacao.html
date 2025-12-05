@@ -1,0 +1,33 @@
+<div class="filters">
+  <label for="filter-text">Filtrar Categoria/Descrição:</label>
+  <input 
+    id="filter-text" 
+    type="text" 
+    [value]="filterText()" 
+    (input)="filterText.set($event.target.value)" 
+    placeholder="Digite a categoria ou descrição..." 
+    aria-label="Filtrar por categoria ou descrição" 
+  />
+</div>
+
+@if (transacoesFiltradas().length === 0) {
+  <p class="no-data" role="status">Nenhuma movimentação encontrada com o filtro atual.</p>
+} @else {
+  <ul role="list">
+    @for (tx of transacoesFiltradas(); track tx._id) {
+      <li [class]="tx.type === 'INCOME' ? 'income-item' : 'expense-item'" aria-label="Movimentação: {{ tx.category }}">
+        <div class="description-date">
+          <span class="category-tag">{{ tx.category }}</span>
+          <strong>{{ tx.description }}</strong>
+          <small>{{ tx.date | date: 'shortDate' }}</small>
+        </div>
+        <span 
+            class="amount" 
+            [style.color]="tx.type === 'INCOME' ? 'var(--income-text)' : 'var(--expense-text)'"
+            aria-live="polite">
+            {{ tx.amount | currency: 'BRL' }}
+        </span>
+      </li>
+    }
+  </ul>
+}

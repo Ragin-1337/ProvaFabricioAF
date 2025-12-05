@@ -1,0 +1,26 @@
+<main class="financial-tracker">
+  <header>
+    <h1> Controle Financeiro Pessoal</h1>
+  </header>
+
+  <section class="balance-card" role="region" aria-live="polite">
+    <h2>Saldo Atual</h2>
+    <p class="balance-amount" [style.color]="saldo() >= 0 ? 'var(--income-color)' : 'var(--expense-color)'">
+      {{ saldo() | currency: 'BRL' }}
+    </p>
+  </section>
+
+  <hr />
+
+  <section class="form-section" role="form" aria-label="Registro de nova movimentação">
+    <h3>Registrar Nova Movimentação</h3>
+    <app-cadastro-transacao (transacaoCadastrada)="carregarDados()"></app-cadastro-transacao>
+  </section>
+
+  <hr />
+
+  <section class="list-section" role="region" aria-label="Histórico de transações">
+    <h3>Histórico de Movimentações (Total: @{{ transacoes().length }})</h3>
+    <app-lista-transacao [transacoes]="transacoes()"></app-lista-transacao>
+  </section>
+</main>

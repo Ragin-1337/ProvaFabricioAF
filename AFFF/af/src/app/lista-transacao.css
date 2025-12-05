@@ -1,0 +1,101 @@
+/* src/app/lista-transacao.component.css */
+
+:host {
+  /* Cores de borda para Receita/Despesa */
+  --income-border: #4CAF50;
+  --expense-border: #F44336;
+  /* Cores do texto do valor (para o style binding) */
+  --income-text: #00A000;
+  --expense-text: #D00000;
+}
+
+.filters { 
+    margin-bottom: 20px; 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filters label {
+    font-weight: bold;
+    color: #34495e;
+}
+
+.filters input { 
+    padding: 10px; 
+    border-radius: 6px; 
+    border: 1px solid #ccc; 
+    width: 350px; 
+    box-sizing: border-box;
+}
+
+ul { 
+    list-style: none; 
+    padding: 0; 
+}
+
+li {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px; 
+    margin-bottom: 10px; 
+    border-radius: 8px;
+    border-left: 8px solid; /* A borda que será colorida */
+    background-color: #ffffff; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Coloração da borda via class binding */
+.income-item { 
+    border-left-color: var(--income-border); 
+} 
+
+.expense-item { 
+    border-left-color: var(--expense-border); 
+} 
+
+.description-date {
+    display: flex;
+    align-items: center;
+}
+
+.description-date strong {
+    margin-right: 15px;
+    color: #2c3e50;
+}
+
+.description-date small { 
+    color: #7f8c8d; 
+    font-size: 0.85em;
+}
+
+.amount { 
+    font-weight: bold; 
+    font-size: 1.2em; 
+}
+
+.category-tag {
+    display: inline-block; 
+    padding: 4px 8px; 
+    margin-right: 15px;
+    border-radius: 4px; 
+    background-color: #ecf0f1; 
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.no-data {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+}
